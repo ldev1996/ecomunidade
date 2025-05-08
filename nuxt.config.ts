@@ -1,12 +1,28 @@
+import tailwindcss from "@tailwindcss/vite";
+
 export default defineNuxtConfig({
     compatibilityDate: '2024-11-01',
     devtools: { enabled: true },
-    css: ['@/assets/css/main.css'],
+    css: ['~/assets/css/main.css'],
+    vite: {
+        plugins: [
+            tailwindcss(),
+        ],
+    },
     modules: [
+        '@nuxtjs/google-fonts',
         '@nuxt/icon',
-        '@nuxtjs/tailwindcss',
         '@nuxtjs/supabase'
     ],
+    googleFonts: {
+        families: {
+            Poppins: [400, 600, 700],
+            Inter: [400, 500, 700],
+        },
+        display: 'swap',
+        download: true,
+        preload: true
+    },
     supabase: {
         redirectOptions: {
             login: '/login',

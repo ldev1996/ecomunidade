@@ -1,5 +1,5 @@
 <template>
-    <p class="text-3xl text-center">Hello World!</p>
+    <h1 class="text-3xl text-center text-primary">Hello World!</h1>
 </template>
 
 <script lang='js'>

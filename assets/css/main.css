@@ -1,3 +1,55 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+    /* Cor primária */
+        --color-primary-light: var(--color-green-400);
+        --color-primary: var(--color-green-500);
+        --color-primary-dark: var(--color-green-600);
+
+    /* Cor secundária */
+        --color-secondary-light: var(--color-lime-400);
+        --color-secondary: var(--color-lime-500);
+        --color-secondary-dark: var(--color-lime-600);
+
+    /* cor de destaque */
+        --color-highlight-light: var(--color-amber-400);
+        --color-highlight: var(--color-amber-500);
+        --color-highlight-dark: var(--color-amber-600);
+
+    /* Cor de erro */
+        --color-error-light: var(--color-red-400);
+        --color-error: var(--color-red-500);
+        --color-error-dark: var(--color-red-600);
+
+    /* Cor de sucesso: emerald */
+        --color-sucess-light: var(--color-emerald-400);
+        --color-sucess: var(--color-emerald-500);
+        --color-sucess-dark: var(--color-emerald-600);
+
+    /* Cores principais/neutras */
+        --color-main-50: var(--color-neutral-50);
+        --color-main-100: var(--color-neutral-100);
+        --color-main-200: var(--color-neutral-200);
+        --color-main-300: var(--color-neutral-300);
+        --color-main-400: var(--color-neutral-400);
+        --color-main-500: var(--color-neutral-500);
+        --color-main-600: var(--color-neutral-600);
+        --color-main-700: var(--color-neutral-700);
+        --color-main-800: var(--color-neutral-800);
+        --color-main-900: var(--color-neutral-900);
+        --color-main-950: var(--color-neutral-950);
+
+    /* Fontes */
+        --font-title: Poppins, sans-serif;
+        --font-text: Inter, sans-serif;
+}
+
+@layer base {
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-title
+    }
+
+    p {
+        @apply font-text
+    }
+}
