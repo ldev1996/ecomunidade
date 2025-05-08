@@ -22,3 +22,6 @@ logs
 .env
 .env.*
 !.env.example
+
+# Tailwind (tailwind.config.ts is necessary only to intellisense)
+tailwind.config.ts
