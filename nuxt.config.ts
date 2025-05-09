@@ -29,9 +29,14 @@ export default defineNuxtConfig({
             callback: '/confirm',
             include: undefined,
             exclude: ['/', '/register'],
-            saveRedirectToCookie: true,
+            saveRedirectToCookie: false,
         },
         url: process.env.SUPABASE_URL,
         key: process.env.SUPABASE_ANON_KEY
+    },
+    runtimeConfig: {
+        public: {
+            supabaseRedirectUrl: process.env.PUBLIC_SUPABASE_REDIRECT_URL || 'http://localhost:3000/confirm'
+        }
     }
 })
