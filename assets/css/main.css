@@ -61,10 +61,3 @@
         @apply cursor-pointer font-title
     }
 }
-
-@layer components {
-    input.std {
-        @apply shadow border-2 border-main-200 dark:border-main-600 text-main-700 dark:text-main-300
-        p-2 rounded focus:border-primary focus:outline focus:outline-primary font-text
-    }
-}
