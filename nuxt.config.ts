@@ -34,6 +34,14 @@ export default defineNuxtConfig({
         url: process.env.SUPABASE_URL,
         key: process.env.SUPABASE_ANON_KEY
     },
+    app: {
+        head: {
+            link: [
+                { rel: 'icon', type: 'icon', href: '/favicon-light.ico', media: '(prefers-color-scheme: light)' },
+                { rel: 'icon', type: 'icon', href: '/favicon-dark.ico', media: '(prefers-color-scheme: dark)' }
+            ]
+        }
+    },
     runtimeConfig: {
         public: {
             supabaseRedirectUrl: process.env.PUBLIC_SUPABASE_REDIRECT_URL || 'http://localhost:3000/confirm'
