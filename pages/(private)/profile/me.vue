@@ -51,6 +51,7 @@
         try {
             if (!user.value?.id) {
                 throw new Error('Usuário não autenticado!')
+                return navigateTo('/login')
             }
             // Obtém o perfil
             const { data: profileData, error: profileFetchError } = await fetchProfileById(user.value.id)
