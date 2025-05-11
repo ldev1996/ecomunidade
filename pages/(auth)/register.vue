@@ -34,7 +34,7 @@
                 />
                 <v-select
                     v-model="profileForm.userCommunities"
-                    :required="!profileForm.userCommunities || profileForm.userCommunities.length === 0"
+                    :required="profileForm.userCommunities.length === 0"
                     :options="communities"
                     label="name" multiple
                     :reduce="(community) => community.id"
@@ -87,6 +87,10 @@
 
     // LÓGICA PRINCIPAL --------------------------------------------------------
     const handleSubmit = async () => {
+        if(profileForm.value.userCommunities.length === 0) {
+            console.error("Selecione ao menos uma comunidade")
+            return
+        }
         loading.value = true
 
         try {

@@ -69,7 +69,7 @@
             // Obtém os detalhes das comunidades
             const communitiesDetails = await Promise.all(
                 UCData.map(async (community) => {
-                    const { data, error } = await fetchCommunityById(community.id)
+                    const { data, error } = await fetchCommunityById(community.community_id)
                     if (error) throw error
                     return data
                 })
