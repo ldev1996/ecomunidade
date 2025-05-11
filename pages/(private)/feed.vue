@@ -1,28 +1,28 @@
 <template>
-    <nav class="w-full p-2 mb-4">
-        <v-select
-            v-model="filter.community"
-            :options="communityOptions"
-            label="name"
-            
-            @update:modelValue="handleSelectCommunity"
-        />
-    </nav>
     <div v-if="loading">
         <p>Carregando...</p>
     </div>
-    <div v-else-if="offers.length > 0"
-        class="w-full h-full flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <OfferCard
-            v-for="offer in offers"
-            :key="offer.id"
-            :offer="offer"
-        />
-    </div>
     <div v-else>
-        <p>{{ filter.community ?
-        `Ops, parece que não há nenhuma oferta na comunidade  ${filter.community.name}!` :
-        "Não há nenhuma comunidade selecionada..." }}</p>
+        <nav class="w-full p-2 mb-4">
+            <v-select
+                v-model="filter.community"
+                :options="communityOptions"
+                label="name"
+                @update:modelValue="handleSelectCommunity"
+            />
+        </nav>
+        <div v-if="offers.length > 0" class="w-full h-full flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <OfferCard
+                v-for="offer in offers"
+                :key="offer.id"
+                :offer="offer"
+            />
+        </div>
+        <div v-else>
+            <p>{{ filter.community ?
+            `Ops, parece que não há nenhuma oferta na comunidade  ${filter.community.name}!` :
+            "Não há nenhuma comunidade selecionada..." }}</p>
+        </div>
     </div>
 </template>
 
