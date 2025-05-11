@@ -15,7 +15,7 @@
                     label="E-mail"
                     nameId="email" type="email"
                     v-model="authForm.email"
-                    placeholder="Seu melhor e-mail"
+                    placeholder="exemplo@email.com"
                     required :disabled="loading"
                 />
                 <BaseInput
@@ -105,11 +105,11 @@
             if (signUpError) throw signUpError
 
             // ----- Loga o usuário
-            const { data: loginData, error: loginError } = await supabase.auth.signInWithPassword({
+            const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
                 email: authForm.value.email,
                 password: authForm.value.password
             })
-            if (loginError) throw loginError
+            if (signInError) throw signInError
 
             // Garante o término do login
             await nextTick()
