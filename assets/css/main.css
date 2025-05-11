@@ -17,9 +17,9 @@
         --color-highlight-dark: var(--color-amber-600);
 
     /* Cor de erro */
-        --color-error-light: var(--color-red-400);
-        --color-error: var(--color-red-500);
-        --color-error-dark: var(--color-red-600);
+        --color-alert-light: var(--color-red-400);
+        --color-alert: var(--color-red-500);
+        --color-alert-dark: var(--color-red-600);
 
     /* Cor de sucesso: emerald */
         --color-sucess-light: var(--color-emerald-400);

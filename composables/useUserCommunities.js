@@ -15,5 +15,15 @@ export const useUserCommunities = () => {
         return { data, error }
     }
 
-    return { createRelationUC }
+    const fetchUserCommunities = async (userId) => {
+        const { data, error } = await client
+            .from('user_communities')
+            .select('*')
+            .eq('user_id', userId)
+
+        if (error) throw error
+        return { data, error }
+    }
+
+    return { createRelationUC, fetchUserCommunities }
 }

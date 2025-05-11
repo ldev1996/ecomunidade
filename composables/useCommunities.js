@@ -8,7 +8,7 @@ export const useCommunities = () => {
             .order('name', { ascending: true })
 
         if (error) throw error
-        return data
+        return { data, error }
     }
 
     const fetchCommunityById = async (communityId) => {
@@ -16,9 +16,10 @@ export const useCommunities = () => {
             .from('communities')
             .select('*')
             .eq('id', communityId)
+            .single()
 
         if (error) throw error
-        return data
+        return { data, error }
     }
 
     return { fetchAllCommunities, fetchCommunityById }

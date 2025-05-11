@@ -3,7 +3,7 @@
         <label v-if="label" :for="nameId">
             {{ label }}
             <span
-                class="text-red-500 dark:text-red-400"
+                class="text-alert dark:text-alert-light"
                 v-if="required"
             >*</span>
         </label>
@@ -14,7 +14,7 @@
                 disabled:opacity-50 disabled:cursor-not-allowed
                 transition-colors duration-200 w-full"
             :class="error ?
-                'text-error dark:text-error-light border-error dark:border-error-light'
+                'text-alert dark:text-alert-light border-alert dark:border-alert-light'
                 : ''"
             :id="nameId"
             :name="nameId"

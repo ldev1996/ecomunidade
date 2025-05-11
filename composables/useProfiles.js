@@ -14,5 +14,16 @@ export const useProfiles = () => {
         return { data, error }
     }
 
-    return { createProfile }
+    const fetchProfileById = async (userId) => {
+        const { data, error } = await client
+            .from('profiles')
+            .select('*')
+            .eq('id', userId)
+            .single()
+
+        if (error) throw error
+        return { data, error }
+    }
+
+    return { createProfile, fetchProfileById }
 }

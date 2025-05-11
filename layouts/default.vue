@@ -26,7 +26,7 @@
             </NuxtLink>
         </nav>
     </header>
-    <main>
+    <main class="mb-16 mt-2 lg:mb-2 lg:mt-16 w-full h-full px-4">
         <slot />
     </main>
     <footer
