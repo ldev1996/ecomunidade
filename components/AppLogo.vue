@@ -5,7 +5,7 @@
             text-center flex items-center justify-center gap-2"
     >
         <span>
-            <img src="/icon-light.svg" alt="ECOmunidade's logo" class="inline-block align-middle h-[1.4em] w-[2em]">
+            <img src="/icon-light.svg" alt="ECOmunidade's logo" class="inline-block align-middle h-[1.4em] min-w-[1.6em]">
         </span>
         <slot>
             {{ name }}
@@ -14,7 +14,6 @@
 </template>
 
 <script setup>
-    // DEFININDO DETALHES ------------------------------------------------------
     defineProps({
         size: {
             type: String,

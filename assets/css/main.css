@@ -53,7 +53,7 @@
         @apply font-title
     }
 
-    p {
+    p, label {
         @apply font-text text-main-900 dark:text-main-100
     }
 

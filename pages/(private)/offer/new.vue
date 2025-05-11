@@ -4,7 +4,7 @@
 
 <script setup lang='js'>
     // DEFININDO DETALHES ------------------------------------------------------
-    definePageMeta({ layout: false })
+
     // IMPORTANDO COMPONENTES --------------------------------------------------
 
     // DEFININDO VARIÁVEIS E CONSTANTES ----------------------------------------
