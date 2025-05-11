@@ -8,7 +8,7 @@ export const useCommunities = () => {
             .order('name', { ascending: true })
 
         if (error) throw error
-        return { data, error }
+        return data
     }
 
     const fetchCommunityById = async (communityId) => {

@@ -15,7 +15,8 @@
                 :aria-label="item.label"
                 :class="[
                     isActiveRoute(item.to) ?
-                    'text-primary dark:text-primary-light underline underline-offset-8' : '',
+                    'text-primary dark:text-primary-light underline underline-offset-8':
+                    'text-main-900 dark:text-main-100',
                     'text-xl flex items-center justify-center transition duration-200 font-title'
                 ]"
             >
