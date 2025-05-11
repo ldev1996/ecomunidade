@@ -61,9 +61,7 @@
             console.log("Perfil carregado!")
 
             // Obtém as comunidades
-            const { data: UCData, error: UCFetchError } = await fetchUserCommunities(user.value.id)
-            if (UCFetchError) throw UCFetchError
-
+            const UCData = await fetchUserCommunities(user.value.id)
             console.log("Comunidades obtidas!")
 
             // Obtém os detalhes das comunidades

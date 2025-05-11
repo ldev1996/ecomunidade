@@ -82,7 +82,7 @@
         userCommunities.value = await fetchUserCommunities(user.value.id)
         const communitiesDetails = await Promise.all(
             userCommunities.value.map(async (community) => {
-                const { data, error } = await fetchCommunityById(community.id)
+                const { data, error } = await fetchCommunityById(community.community_id)
                 if (error) throw error
                 return data
             })

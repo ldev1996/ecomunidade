@@ -22,7 +22,7 @@ export const useUserCommunities = () => {
             .eq('user_id', userId)
 
         if (error) throw error
-        return { data, error }
+        return data
     }
 
     return { createRelationUC, fetchUserCommunities }

@@ -42,7 +42,8 @@
                 :aria-current="isActiveRoute(item.to) ? 'page' : undefined"
                 :aria-label="item.label"
                 :class="[
-                    isActiveRoute(item.to) ? 'text-primary dark:text-primary-light' : '',
+                    isActiveRoute(item.to) ? 'text-primary dark:text-primary-light' :
+                    'text-main-900 dark:text-main-100',
                     'text-2xl flex items-center justify-center w-full h-full transition duration-200'
                 ]"
             >
