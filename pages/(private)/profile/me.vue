@@ -94,7 +94,7 @@
 
             // Obtém as ofertas
             offers.value = await fetchMyOffers()
-            console.log("Detalhes obtidos para as ofertas!", offers.value)
+            console.log("Detalhes obtidos para as ofertas!")
 
         } catch (error) {
             console.error("Erro ao carregar o perfil ou comunidades:", error)
