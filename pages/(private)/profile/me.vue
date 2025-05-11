@@ -3,10 +3,12 @@
         <p>Carregando...</p>
     </div>
     <div v-else-if="profile" class="h-full w-full flex flex-col items-start justify-start gap-4">
+
         <h1 class="text-xl lg:text-3xl text-primary dark:text-primary-light">Bem-vind@, {{ profile.username }}!</h1>
-        <div class="flex flex-col bg-main-100 dark:bg-main-900 w-full rounded-xl p-2 shadow-lg">
+
+        <div class="flex flex-col bg-main-100 dark:bg-main-900 w-full rounded-xl p-2 gap-2 shadow-md">
             <h2 class="text-lg lg:text-xl">Minhas Comunidades</h2>
-            <ul class="flex">
+            <ul class="w-full flex flex-row items-start justify-start flex-wrap gap-2">
                 <li
                     v-for="community in communities" :key="community.name"
                     class="bg-primary/20 dark:bg-primary-light/20 border border-primary-dark dark:border-primary
@@ -22,6 +24,7 @@
             px-5 py-2 rounded-xl shadow-md transition font-title"
             :disabled="btnLoading"
         >Desconetar</button>
+        
     </div>
     <div v-else>
         <p>Desculpe, não encontramos seu perfil.</p>

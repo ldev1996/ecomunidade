@@ -1,7 +1,7 @@
 <template>
     <header
         class="h-14 w-full hidden lg:flex items-center p-4 fixed z-10 top-0 left-0
-            backdrop-blur-md bg-main-100 dark:bg-main-900 gap-8"
+            backdrop-blur-md bg-main-100 dark:bg-main-900 gap-8 shadow-md"
     >
         <NuxtLink to="/feed">
             <AppLogo size="text-2xl" />
