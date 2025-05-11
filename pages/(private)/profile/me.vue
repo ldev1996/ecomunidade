@@ -6,7 +6,7 @@
 
         <h1 class="text-xl lg:text-3xl text-primary dark:text-primary-light">Bem-vind@, {{ profile.username }}!</h1>
 
-        <div class="flex flex-col bg-main-100 dark:bg-main-900 w-full rounded-xl p-2 gap-2 shadow-md">
+        <section class="flex flex-col bg-main-100 dark:bg-main-900 w-full rounded-xl p-2 gap-2 shadow-md">
             <h2 class="text-lg lg:text-xl">Minhas Comunidades</h2>
             <ul class="w-full flex flex-row items-start justify-start flex-wrap gap-2">
                 <li
@@ -15,7 +15,20 @@
                         rounded-2xl text-primary-dark dark:text-primary font-title py-1 px-2 text-sm"
                 >{{ community.name }}</li>
             </ul>            
-        </div>
+        </section>
+
+        <section class="flex flex-col bg-main-200 dark:bg-main-950 w-full rounded-xl p-2 gap-2 shadow-md">
+            <h2 class="text-lg lg:text-xl">Minhas Ofertas</h2>
+            <div class="w-full h-full flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <OfferCard
+                    v-for="offer in offers"
+                    :key="offer.id"
+                    :offer="offer"
+                />     
+            </div>
+
+          
+        </section>
 
         <button
             @click="handleSignOut"
@@ -41,8 +54,11 @@
     const { fetchProfileById } = useProfiles()
     const { fetchUserCommunities } = useUserCommunities()
     const { fetchCommunityById } = useCommunities()
+    const { fetchMyOffers } = useOffers()
+
     const profile = ref(null)
     const communities = ref([])
+    const offers = ref()
     const loading = ref(true)
     const btnLoading = ref(false)
 
@@ -75,6 +91,10 @@
 
             communities.value = communitiesDetails
             console.log("Detalhes obtidos para as comunidades!")
+
+            // Obtém as ofertas
+            offers.value = await fetchMyOffers()
+            console.log("Detalhes obtidos para as ofertas!", offers.value)
 
         } catch (error) {
             console.error("Erro ao carregar o perfil ou comunidades:", error)

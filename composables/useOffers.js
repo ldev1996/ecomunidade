@@ -1,5 +1,6 @@
 export const useOffers = () => {
     const client = useSupabaseClient()
+    const user = useSupabaseUser()
 
     const createOffer = async (userId, itemId, communityId, description, quantity) => {
         const { data, error } = await client
@@ -22,10 +23,23 @@ export const useOffers = () => {
             .select('*')
             .eq('community_id', communityId)
             .eq('active', true)
+            .neq('user_id', user.value.id)
+            .order('created_at', { ascending: false })
 
         if (error) throw error
         return data
     }
 
-    return { createOffer, fetchOffersByCommunity }
+    const fetchMyOffers = async () => {
+        const { data, error } = await client
+            .from('offers')
+            .select('*')
+            .eq('user_id', user.value.id)
+            .order('created_at', { ascending: true })
+
+        if (error) throw error
+        return data
+    }
+
+    return { createOffer, fetchOffersByCommunity, fetchMyOffers }
 }
