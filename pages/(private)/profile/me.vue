@@ -20,7 +20,7 @@
         <section class="flex flex-col bg-main-200 dark:bg-main-950 w-full rounded-xl p-2 gap-2 shadow-md">
             <h2 class="text-lg lg:text-xl">Minhas Ofertas</h2>
             <div class="w-full h-full flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <OfferCard
+                <OfferCard isMine
                     v-for="offer in offers"
                     :key="offer.id"
                     :offer="offer"
