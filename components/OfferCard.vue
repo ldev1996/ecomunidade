@@ -1,14 +1,14 @@
 <template>
     <article
         class="w-full p-2 roundex-xl bg-main-100 dark:bg-main-900 flex flex-col gap-2
-            rounded-xl  shadow-md">
+            rounded-xl shadow-md">
         <div class="w-full flex justify-between items-center">
             <h2 class="font-bold text-lg text-primary dark:text-primary-light">
                 {{ item.name || 'Item não encontrado' }}
             </h2>
             <span class="font-title text-sm text-main-800 dark:text-main-200">
                 {{ item.category }}    
-            </span>            
+            </span>
         </div>
 
         <div class="w-full flex justify-between items-start gap-2">

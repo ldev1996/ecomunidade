@@ -41,5 +41,16 @@ export const useOffers = () => {
         return data
     }
 
-    return { createOffer, fetchOffersByCommunity, fetchMyOffers }
+    const fetchOfferById = async (offerId) => {
+        const { data, error } = await client
+            .from('offers')
+            .select('*')
+            .eq('id', offerId)
+            .single()
+
+        if (error) throw error
+        return data
+    }
+
+    return { createOffer, fetchOffersByCommunity, fetchMyOffers, fetchOfferById }
 }

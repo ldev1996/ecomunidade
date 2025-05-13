@@ -1,12 +1,12 @@
 <template>
     <header
-        class="h-14 w-full hidden lg:flex items-center p-4 fixed z-10 top-0 left-0
+        class="h-14 w-full flex items-center p-4 fixed z-10 top-0 left-0
             backdrop-blur-md bg-main-100 dark:bg-main-900 gap-8 shadow-md"
     >
         <NuxtLink to="/feed">
             <AppLogo size="text-2xl" />
         </NuxtLink>
-        <nav class="h-full w-full flex flex-row items-center justify-start gap-8">
+        <nav class="h-full w-full flex-row items-center justify-start gap-8 hidden lg:flex">
             <NuxtLink
                 v-for="item in navItems"
                 :key="item.to"
@@ -27,7 +27,7 @@
             </NuxtLink>
         </nav>
     </header>
-    <main class="mb-18 mt-2 lg:mb-2 lg:mt-18 w-full h-full px-4">
+    <main class="mb-18 mt-18 lg:mb-2 lg:mt-18 w-full h-full px-4">
         <slot />
     </main>
     <footer
