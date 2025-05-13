@@ -1,9 +1,8 @@
 <template>
     <ClientOnly>
-        <form method="post" @submit.prevent="handleSubmit()"
-            class="w-full h-full flex flex-col gap-4 px-4 py-2"
-        >
-            <div class="flex-1 overflow-y-auto min-h-0 space-y-2">
+        <div class="w-full h-full flex flex-col gap-4 px-4 py-2">
+            <form  method="post" @submit.prevent="handleSubmit()"
+                class="flex-1 overflow-y-auto min-h-0 space-y-2">
                 <BaseInput
                     label="Nome de Usuário"
                     nameId="username"
@@ -46,8 +45,9 @@
                 >
                     {{ loading ? 'Preparando sua Conta...' : 'Começar a Reciclar' }}
                 </button>
-            </div>
-        </form>
+            </form>
+            <p>Já tem uma conta? <NuxtLink class="text-primary underline" to="/login">Fazer login</NuxtLink></p>
+        </div>
     </ClientOnly>
 </template>
 

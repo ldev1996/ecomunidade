@@ -1,9 +1,8 @@
 <template>
     <ClientOnly>
-        <form method="post" @submit.prevent="handleSubmit()"
-            class="w-full h-full flex flex-col gap-4 px-4 py-2"
-        >
-            <div class="flex-1 overflow-y-auto min-h-0 space-y-2">
+        <div class="w-full h-full flex flex-col gap-4 px-4 py-2">
+            <form  method="post" @submit.prevent="handleSubmit()"
+            class="flex-1 overflow-y-auto min-h-0 space-y-2">
                 <BaseInput
                     label="E-mail"
                     nameId="email" type="email"
@@ -25,8 +24,9 @@
                 >
                     {{ loading ? 'Conectando sua conta...' : 'Fazer Login' }}
                 </button>
-            </div>
-        </form>
+            </form>
+            <p>Não tem uma conta? <NuxtLink class="text-primary underline" to="/register">Criar uma conta</NuxtLink></p>
+        </div>
     </ClientOnly>
 </template>
 
