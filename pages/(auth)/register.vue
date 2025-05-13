@@ -24,13 +24,6 @@
                     placeholder="Uma senha forte"
                     required :disabled="loading"
                 />
-                <BaseInput
-                    label="WahtsApp"
-                    nameId="phone" type="tel"
-                    v-model="profileForm.phone"
-                    placeholder="Seu número de WhatsApp"
-                    required :disabled="loading"
-                />
                 <v-select
                     v-model="profileForm.userCommunities"
                     :required="profileForm.userCommunities.length === 0"
@@ -117,8 +110,7 @@
             // ----- Cria o perfil do usuário
             const { error: profileError } = await createProfile(
                 user.value.id,
-                profileForm.value.username,
-                profileForm.value.phone
+                profileForm.value.username
             )
             if (profileError) {
                 // Deleta o usuário se não puder criar perfil
