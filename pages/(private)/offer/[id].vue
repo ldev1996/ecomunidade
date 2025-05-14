@@ -5,6 +5,10 @@
         </div>
         <div v-else-if="offer && item" class="w-full flex flex-col gap-2">
             <h1 class="text-primary dark:text-primary-light text-2xl">{{ item.name }}</h1>
+            <span class="bg-primary/20 dark:bg-primary-light/20 border border-primary-dark dark:border-primary
+                rounded-2xl text-primary-dark dark:text-primary font-title py-1 px-2 text-sm text-center">
+                {{ community.name }}
+            </span>
             <span class="font-title text-sm text-main-800 dark:text-main-200
                 bg-main-200 dark:bg-main-800 rounded-lg shadow p-2 w-auto">
                 <b>Ofertante: </b>{{ profile.username }}<br>
@@ -58,8 +62,6 @@
     definePageMeta({ layout: 'card' })
     useHead({ title: 'Carregando...' })
 
-    // IMPORTANDO COMPONENTES --------------------------------------------------
-
     // DEFININDO VARIÁVEIS E CONSTANTES ----------------------------------------
     const { id } = useRoute().params
     const supabase = useSupabaseClient()
@@ -68,16 +70,19 @@
     const { fetchOfferById } = useOffers()
     const { fetchItemById } = useItems()
     const { fetchProfileById } = useProfiles()
+    const {fetchCommunityById } = useCommunities()
 
     const offer = ref(null)
     const item = ref(null)
     const profile = ref(null)
+    const community = ref(null)
     const userProfile = ref(null)
     const loading = ref(true)
 
     const date = ref(null)
     const time = ref(null)
     const formattedDate = ref(null)
+
     // MONTANDO ----------------------------------------------------------------
     onMounted(async () => {
         try {
@@ -89,11 +94,14 @@
             item.value = await fetchItemById(offer.value.item_id)
             console.log("Item obtido!")
 
+            // Obtém os dados da comunidade em que a oferta está
+            community.value = await fetchCommunityById(offer.value.community_id)
+
             // Obtém os detlhes do ofertante
             profile.value = await fetchProfileById(offer.value.user_id)
             console.log("Perfil ofertante obtido!")
 
-            // Obtém os dados do perfil dp usuário atual
+            // Obtém os dados do perfil do usuário atual
             userProfile.value = await fetchProfileById(user.value.id)
             console.log("Perifl do usuário obtido!")
 
@@ -119,14 +127,17 @@
 
     const getMailText = () => {
         return `
-        Olá, ${profile.value.username || 'ofertante'}!
+        Olá, ${profile.value.username}!
 
-        Vi sua oferta de "${item.value.name}" na ECOmunidade e gostaria de retirá-la.  
+        Vi sua oferta na ECOmunidade e gostaria de retirá-la.
+        🟢 Oferta (${item.value.name}): ${offer.value.description}
+        🟢 Comunidade: ${community.value.name}
+
         Aqui estão meus dados para combinarmos:
 
-        • Meu nome: ${userProfile.value.username}  
-        • Melhor horário para retirada: ${formattedDate.value} às ${time.value}
-        • Meu contato: ${user.value.email} 
+        🟢 Meu nome: ${userProfile.value.username}  
+        🟢 Melhor horário para retirada: ${formattedDate.value} às ${time.value}
+        🟢 Meu contato: ${user.value.email} 
 
         Atenciosamente,  
         ${userProfile.value.username} 
@@ -139,7 +150,7 @@
             return
         }
         formattedDate.value = formatDate(date.value)
-        const subject = `Interesse no item ${item.value.name}`
+        const subject = `Interesse na oferta de ${item.value.name} na ECOmunidade ♻️`
         const body = getMailText()
 
         // Abre o Gmail com tudo preenchido

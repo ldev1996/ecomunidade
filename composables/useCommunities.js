@@ -19,7 +19,7 @@ export const useCommunities = () => {
             .single()
 
         if (error) throw error
-        return { data, error }
+        return data
     }
 
     return { fetchAllCommunities, fetchCommunityById }
