@@ -9,7 +9,7 @@
             <div class="w-full flex flex-col items-start justify-start gap-4 *:flex *:flex-col
                 *:w-full *:rounded-xl *:p-2 *:gap-2 *:shadow-md">
 
-                <section class=" bg-main-100 dark:bg-main-900">
+                <section class="bg-main-100 dark:bg-main-900">
                     <h2 class="text-lg lg:text-xl">Minhas Comunidades</h2>
                     <ul class="w-full flex flex-row items-start justify-start flex-wrap gap-2">
                         <li
@@ -74,10 +74,7 @@
                 return navigateTo('/login')
             }
             // Obtém o perfil
-            const { data: profileData, error: profileFetchError } = await fetchProfileById(user.value.id)
-            if (profileFetchError) throw profileFetchError
-
-            profile.value = profileData
+            profile.value = await fetchProfileById(user.value.id)
             console.log("Perfil carregado!")
 
             // Obtém as comunidades

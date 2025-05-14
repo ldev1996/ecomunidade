@@ -69,8 +69,7 @@
 
     const profileForm = ref({
         username: '',
-        userCommunities: [],
-        phone: ''
+        userCommunities: []
     })
 
     // MONTANDO ----------------------------------------------------------------
@@ -110,7 +109,8 @@
             // ----- Cria o perfil do usuário
             const { error: profileError } = await createProfile(
                 user.value.id,
-                profileForm.value.username
+                profileForm.value.username,
+                user.value.email
             )
             if (profileError) {
                 // Deleta o usuário se não puder criar perfil

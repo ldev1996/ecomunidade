@@ -1,12 +1,13 @@
 export const useProfiles = () => {
     const client = useSupabaseClient()
 
-    const createProfile = async (userId, username) => {
+    const createProfile = async (userId, username, contact) => {
         const { data, error } = await client
             .from('profiles')
             .insert({
                 id: userId,
-                username: username
+                username: username,
+                contact: contact
             })
 
         if (error) throw error
@@ -21,7 +22,7 @@ export const useProfiles = () => {
             .single()
 
         if (error) throw error
-        return { data, error }
+        return data
     }
 
     return { createProfile, fetchProfileById }
