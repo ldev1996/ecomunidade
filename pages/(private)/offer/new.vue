@@ -12,12 +12,14 @@
                     label="name" formLabel="Tipo de item"
                     :reduce="(item) => item.id"
                 />
-                <BaseInput
-                    label="Descrição"
-                    nameId="description" type="text"
+                <BaseTextarea
+                    label="Detalhes do Item"
+                    nameId="description"
+                    :rows=5 :cols=30
+                    :maxlength=350
                     v-model="form.description"
-                    placeholder="Descreva o estado do item"
-                    required :disabled="loading"          
+                    placeholder="Ex.: cor, tamanho, como está de uso, se está sujo ou danificado, etc."
+                    required :disabled="loading"
                 />
                 <BaseInput
                     label="Quantidade"
@@ -79,6 +81,7 @@
             })
         )
         communities.value = communitiesDetails
+        if (communities.value.length === 1) form.value.community = communities.value[0]
     })
     // LÓGICA PRINCIPAL --------------------------------------------------------
     const handleSubmit = async () => {

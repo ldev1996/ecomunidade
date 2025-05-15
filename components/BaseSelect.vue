@@ -14,23 +14,7 @@
             :class="['vs-select-tailwind',
                 multiple ? 'vs_multiple' : ''
             ]"
-        >
-            <template #deselect="{ deselect }">
-            <Icon 
-                name="lucide:circle-x" 
-                @click="deselect"
-                size=1.4rem
-            />
-            </template>
-            
-            <template #open-indicator="{ attributes }">
-            <Icon 
-                name="lucide:chevron-down" 
-                v-bind="attributes"
-                size=1.6rem
-            />
-            </template>
-            
+        >   
             <template v-for="(_, slot) in $slots" #[slot]="scope">
                 <slot :name="slot" v-bind="scope" />
             </template>
@@ -47,18 +31,27 @@
 
     const customComponents = {
         Deselect: {
-            render: () => h(resolveComponent('Icon'), { 
-                name: 'lucide:circle-x',
-                size: '1.4rem'
-            })
+            render() {
+                return h('div', { class: 'vs__deselect' }, [
+                    h(resolveComponent('Icon'), {
+                        name: 'lucide:x',
+                        size: '1.4rem',
+                    })
+                ])
+            }
         },
         OpenIndicator: {
-            render: () => h(resolveComponent('Icon'), { 
-                name: 'lucide:chevron-down',
-                size: '1.6rem'
-            })
+            render() {
+                return h('div', { class: 'vs__open-indicator' }, [
+                    h(resolveComponent('Icon'), {
+                        name: 'lucide:chevron-down',
+                        size: '1.4rem',
+                    })
+                ])
+            }
         }
-    }
+    };
+
 
     const props = defineProps({
         multiple: {
@@ -84,7 +77,7 @@
     }
 
     .vs-select-tailwind .vs__dropdown-toggle {
-        @apply w-full shadow p-2 border-2 border-main-200 dark:border-main-600 font-text
+        @apply w-full shadow p-2 border-2 border-main-200 dark:border-main-500 font-text
         flex items-center justify-center
     }
 
@@ -110,12 +103,12 @@
     }
 
     .vs-select-tailwind .vs__dropdown-toggle .vs__actions {
-        @apply flex items-center h-full text-main-900 dark:text-main-100
+        @apply flex items-center h-full
     }
 
     .vs-select-tailwind .vs__dropdown-toggle .vs__actions .vs__deselect,
     .vs-select-tailwind .vs__dropdown-toggle .vs__actions .vs__open-indicator {
-        @apply cursor-pointer
+        @apply  flex justify-center items-center cursor-pointer text-main-900 dark:text-main-100
     }
 
     .vs-select-tailwind	.vs__dropdown-menu {

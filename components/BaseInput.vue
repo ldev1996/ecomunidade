@@ -9,7 +9,7 @@
         </label>
         <input
             class="shadow border-2 border-main-200 dark:border-main-800
-                placeholder:text-main-600 dark:placeholder:text-main-400
+                placeholder:text-main-500 dark:placeholder:text-main-400
                 text-main-900 dark:text-main-100 p-2 rounded font-text
                 focus:border-primary focus:outline focus:outline-primary
                 disabled:opacity-50 disabled:cursor-not-allowed

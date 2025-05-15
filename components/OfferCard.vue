@@ -30,7 +30,7 @@
         <div
             class="flex items-baseline gap-2 *:font-text border-t-2
                 border-t-main-200 dark:border-t-main-800 pt-2 mt-4">
-            <dt class="text-sm text-main-600 dark:text-main-400">Quantidade</dt>
+            <dt class="text-sm text-main-500 dark:text-main-400">Quantidade</dt>
             <dd class="text-main-900 dark:text-main-100">{{ offer.quantity || 'N/D' }}</dd>
         </div>
     </article>
