@@ -73,8 +73,7 @@
 </script>
 
 <style>
-    @import 'tailwindcss';
-    @import 'assets/css/main.css';
+    @reference 'assets/css/main.css';
 
     .vs-select-tailwind {
         @apply flex items-center justify-center gap-2 w-full h-auto

@@ -27,10 +27,6 @@
 </template>
 
 <script setup lang='js'>
-    // IMPORTANDO COMPONENTES --------------------------------------------------
-    import vSelect from 'vue-select'
-    import 'vue-select/dist/vue-select.css'
-
     // DEFININDO VARIÁVEIS E CONSTANTES ----------------------------------------
     const user = useSupabaseUser()
     const { fetchOffersByCommunity } = useOffers()

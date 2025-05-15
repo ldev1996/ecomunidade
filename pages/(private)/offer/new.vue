@@ -49,10 +49,6 @@
     definePageMeta({ layout: 'card' })
     useHead({ title: 'Nova Oferta' })
 
-    // IMPORTANDO COMPONENTES --------------------------------------------------
-    import vSelect from 'vue-select'
-    import 'vue-select/dist/vue-select.css'
-
     // DEFININDO VARIÁVEIS E CONSTANTES ----------------------------------------
     const supabase = useSupabaseClient()
     const user = useSupabaseUser()
