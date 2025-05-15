@@ -19,6 +19,7 @@
             <Icon 
                 name="lucide:circle-x" 
                 @click="deselect"
+                size=1.4rem
             />
             </template>
             
@@ -26,6 +27,7 @@
             <Icon 
                 name="lucide:chevron-down" 
                 v-bind="attributes"
+                size=1.6rem
             />
             </template>
             
@@ -47,11 +49,13 @@
         Deselect: {
             render: () => h(resolveComponent('Icon'), { 
                 name: 'lucide:circle-x',
+                size: '1.4rem'
             })
         },
         OpenIndicator: {
             render: () => h(resolveComponent('Icon'), { 
                 name: 'lucide:chevron-down',
+                size: '1.6rem'
             })
         }
     }
@@ -107,6 +111,11 @@
 
     .vs-select-tailwind .vs__dropdown-toggle .vs__actions {
         @apply flex items-center h-full text-main-900 dark:text-main-100
+    }
+
+    .vs-select-tailwind .vs__dropdown-toggle .vs__actions .vs__deselect,
+    .vs-select-tailwind .vs__dropdown-toggle .vs__actions .vs__open-indicator {
+        @apply cursor-pointer
     }
 
     .vs-select-tailwind	.vs__dropdown-menu {
