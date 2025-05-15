@@ -15,7 +15,7 @@
                 Criar Conta
             </NuxtLink>
             <NuxtLink to="/login" class="border border-primary text-primary-dark px-5 py-2 
-            rounded-xl hover:bg-green-50 font-title">
+            rounded-xl hover:bg-main-100 dark:bg-main-900 font-title">
                 Entrar
             </NuxtLink>
         </div>

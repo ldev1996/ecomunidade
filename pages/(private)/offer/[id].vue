@@ -13,7 +13,7 @@
                 bg-main-200 dark:bg-main-800 rounded-lg shadow p-2 w-auto">
                 <b>Ofertante: </b>{{ profile.username }}<br>
                 <b>Contato: </b>
-                <span class="text-primary dark:text-primary-light">
+                <span class="text-primary dark:text-primary-light break-all">
                     {{ profile.contact }}
                 </span>
             </span>
@@ -46,12 +46,20 @@
             </div>
 
             <button
-                class="bg-primary hover:bg-primary-dark dark:bg-primary-light dark:hover:bg-primary
-                text-main-50 mb-2 py-2 rounded-xl shadow-md transition w-full flex items-center justify-center gap-2"
-                @click="openGmail"
+                class="bg-primary hover:bg-primary-dark dark:bg-primary-light dark:hover:bg-primary text-lg
+                text-main-50 py-2 rounded-xl shadow-md transition w-full flex items-center justify-center gap-2"
+                @click="openEmail('App')"
             >
                 <Icon name="lucide:mail" class="text-xl" />
-                Solicitar por e-mail
+                Solicitar por app de e-mail
+            </button>
+            <button
+                class="border border-primary text-primary-dark px-5 py-2 hover:bg-main-200 dark:bg-main-800 mb-2
+                rounded-xl shadow-md transition w-full flex items-center justify-center gap-2"
+                @click="openEmail('Browser')"
+            >
+                <Icon name="lucide:mail" class="text-lg" />
+                Solicitar por e-mail web
             </button>
         </div>
     </div>
@@ -144,7 +152,7 @@
         `.trim()
     }
 
-    const openGmail = async () => {
+    const openEmail = async (mode) => {
         if (!date.value || !time.value) {
             alert('Por favor, selecione data e horário para retirada!')
             return
@@ -153,10 +161,14 @@
         const subject = `Interesse na oferta de ${item.value.name} na ECOmunidade ♻️`
         const body = getMailText()
 
-        // Abre o Gmail com tudo preenchido
-        window.open(
-            `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(profile.value?.contact)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,
-            '_blank'
-        )
+        if (mode === 'Browser') {
+            window.open(
+                `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(profile.value?.contact)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`,
+                '_blank'
+            )
+        } else {
+            window.location.href = `mailto:${profile.value.contact}?subject=Interesse no item ${item.value.name}&body=${encodeURIComponent(body)}`
+        }
+
     }
 </script>
