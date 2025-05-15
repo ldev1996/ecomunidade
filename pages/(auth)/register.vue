@@ -49,10 +49,6 @@
     definePageMeta({ layout: 'auth' })
     useHead({ title: 'Crie sua Conta' })
 
-    // IMPORTANDO COMPONENTES --------------------------------------------------
-    import vSelect from 'vue-select'
-    import 'vue-select/dist/vue-select.css'
-
     // DEFININDO VARIÁVEIS E CONSTANTES ---------------------------------------- 
     const supabase = useSupabaseClient()
     const user = useSupabaseUser()
