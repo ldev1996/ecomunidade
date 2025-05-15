@@ -8,8 +8,9 @@
             >*</span>
         </label>
         <input
-            class="shadow border-2 border-main-200 dark:border-main-600
-                text-main-700 dark:text-main-300 p-2 rounded font-text
+            class="shadow border-2 border-main-200 dark:border-main-800
+                placeholder:text-main-600 dark:placeholder:text-main-400
+                text-main-900 dark:text-main-100 p-2 rounded font-text
                 focus:border-primary focus:outline focus:outline-primary
                 disabled:opacity-50 disabled:cursor-not-allowed
                 transition-colors duration-200 w-full"

@@ -4,10 +4,10 @@
     </div>
     <div v-else>
         <nav class="w-full p-2 mb-4">
-            <v-select
+            <BaseSelect
                 v-model="filter.community"
                 :options="communityOptions"
-                label="name"
+                label="name" placeholder="Escolha uma comunidade para ver ofertas"
                 @update:modelValue="handleSelectCommunity"
             />
         </nav>

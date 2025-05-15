@@ -4,11 +4,11 @@
             class="w-full h-full flex flex-col gap-4 px-4 py-2"
         >
             <div class="flex-1 overflow-y-auto min-h-0 space-y-2">
-                <v-select
+                <BaseSelect
                     v-model="form.item"
-                    :required="!form.item"
+                    :required="!form.item" isRequired
                     :options="items"
-                    label="name"
+                    label="name" formLabel="Tipo de item"
                     :reduce="(item) => item.id"
                 />
                 <BaseInput
@@ -25,11 +25,11 @@
                     placeholder="Descreva a quantidade"
                     required :disabled="loading"          
                 />
-                <v-select
+                <BaseSelect
                     v-model="form.community"
-                    :required="!form.community"
+                    :required="!form.community" isRequired
                     :options="communities"
-                    label="name"
+                    label="name" formLabel="Ofertar nesta Comunidade:"
                     :reduce="(community) => community.id"
                 />
                 <button
@@ -78,9 +78,7 @@
         userCommunities.value = await fetchUserCommunities(user.value.id)
         const communitiesDetails = await Promise.all(
             userCommunities.value.map(async (community) => {
-                const { data, error } = await fetchCommunityById(community.community_id)
-                if (error) throw error
-                return data
+                return await fetchCommunityById(community.community_id)
             })
         )
         communities.value = communitiesDetails

@@ -2,7 +2,7 @@
     <ClientOnly>
         <div class="w-full h-full flex flex-col gap-4 px-4 py-2">
             <form  method="post" @submit.prevent="handleSubmit()"
-                class="flex-1 overflow-y-auto min-h-0 space-y-2">
+                class="space-y-2">
                 <BaseInput
                     label="Nome de Usuário"
                     nameId="username"
@@ -24,11 +24,11 @@
                     placeholder="Uma senha forte"
                     required :disabled="loading"
                 />
-                <v-select
+                <BaseSelect
                     v-model="profileForm.userCommunities"
-                    :required="profileForm.userCommunities.length === 0"
+                    :required="profileForm.userCommunities.length === 0" isRequired
                     :options="communities"
-                    label="name" multiple
+                    label="name" formLabel="Comunidades" multiple
                     :reduce="(community) => community.id"
                 />
                 <button
