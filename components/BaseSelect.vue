@@ -106,12 +106,12 @@
     }
 
     .vs-select-tailwind .vs__dropdown-toggle .vs__actions {
-        @apply flex items-center h-full
+        @apply flex items-center h-full text-main-900 dark:text-main-100
     }
 
     .vs-select-tailwind	.vs__dropdown-menu {
-        @apply absolute z-10 w-full mt-1 bg-main-50 shadow rounded py-1 border border-main-200 max-h-60 
-                overflow-auto;
+        @apply absolute z-10 w-full mt-1 bg-main-100 dark:bg-main-900 shadow rounded py-1 border
+        border-main-200 dark:border-main-800 max-h-60 overflow-auto;
     }
 
     .vs-select-tailwind .vs__search {
