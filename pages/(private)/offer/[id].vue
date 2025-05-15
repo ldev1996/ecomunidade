@@ -54,7 +54,7 @@
                 Solicitar por app de e-mail
             </button>
             <button
-                class="border border-primary text-primary-dark px-5 py-2 hover:bg-main-200 dark:bg-main-800 mb-2
+                class="border border-primary text-primary-dark px-5 py-2 hover:bg-main-200 dark:hover:bg-main-800 mb-2
                 rounded-xl shadow-md transition w-full flex items-center justify-center gap-2"
                 @click="openEmail('Browser')"
             >
