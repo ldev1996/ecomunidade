@@ -3,6 +3,7 @@
         <form method="post" @submit.prevent="handleSubmit()"
             class="w-full h-full flex flex-col gap-4 px-4 py-2"
         >
+            <h1 class="text-2xl text-center">Nova Oferta de Doação</h1>
             <div class="flex-1 overflow-y-auto min-h-0 space-y-2">
                 <BaseSelect
                     v-model="form.item"
@@ -11,18 +12,20 @@
                     label="name" formLabel="Tipo de item"
                     :reduce="(item) => item.id"
                 />
-                <BaseInput
-                    label="Descrição"
-                    nameId="description" type="text"
+                <BaseTextarea
+                    label="Detalhes do Item"
+                    nameId="description"
+                    :rows=5 :cols=30
+                    :maxlength=350
                     v-model="form.description"
-                    placeholder="Adicione uma descrição"
-                    required :disabled="loading"          
+                    placeholder="Ex.: cor, tamanho, como está de uso, se está sujo ou danificado, etc."
+                    required :disabled="loading"
                 />
                 <BaseInput
                     label="Quantidade"
                     nameId="quantity" type="text"
                     v-model="form.quantity"
-                    placeholder="Descreva a quantidade"
+                    placeholder="Informe a quantidade"
                     required :disabled="loading"          
                 />
                 <BaseSelect
@@ -78,6 +81,7 @@
             })
         )
         communities.value = communitiesDetails
+        if (communities.value.length === 1) form.value.community = communities.value[0]
     })
     // LÓGICA PRINCIPAL --------------------------------------------------------
     const handleSubmit = async () => {

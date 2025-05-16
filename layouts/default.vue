@@ -61,7 +61,7 @@
     const navItems = [
         {
             to: '/feed',
-            label: 'Feed',
+            label: 'Ofertas',
             icon: 'lucide:home'
         },
         {

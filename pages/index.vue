@@ -11,11 +11,11 @@
 
         <div class="flex gap-4 justify-center">
             <NuxtLink to="/register" class="bg-primary hover:bg-primary-dark text-white
-            px-5 py-2 rounded-xl shadow-md transition font-title">
+            px-5 py-2 rounded-xl shadow-md font-title transition">
                 Criar Conta
             </NuxtLink>
             <NuxtLink to="/login" class="border border-primary text-primary-dark px-5 py-2 
-            rounded-xl hover:bg-main-100 dark:bg-main-900 font-title">
+            rounded-xl hover:bg-main-100 font-title transition">
                 Entrar
             </NuxtLink>
         </div>

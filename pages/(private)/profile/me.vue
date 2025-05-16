@@ -20,7 +20,7 @@
                     </ul>
                 </section>
         
-                <section class="bg-main-200 dark:bg-main-950">
+                <section class="bg-main-200 dark:bg-main-950" v-if="offers.length > 0">
                     <h2 class="text-lg lg:text-xl">Minhas Ofertas</h2>
                     <div class="w-full h-full flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <OfferCard isMine
