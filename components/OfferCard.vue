@@ -15,11 +15,12 @@
             <p class="italic text-sm w-full">
                 {{ offer.description || 'Não há uma descrição para esta oferta' }}
             </p>
-            <NuxtLink v-if="isMine" :to="'/offer/edit/' + offer.id"
-                class="w-10 aspect-1/1 bg-primary dark:bg-primary-light flex items-center justify-center transition
-                hover:bg-primary-dark dark:hover:bg-primary rounded-xl text-xl text-main-100 dark:text-main-900">
-                <Icon name="lucide:square-pen" />
-            </NuxtLink>
+            <button v-if="isMine"
+                @click="handleDelete()"
+                class="w-10 aspect-1/1 bg-alert dark:bg-alert-light flex items-center justify-center transition
+                hover:bg-alert-dark dark:hover:bg-alert rounded-xl text-xl text-main-100 dark:text-main-900">
+                <Icon name="lucide:trash-2" />
+            </button>
             <NuxtLink v-else :to="'/offer/' + offer.id"
                 class="w-10 aspect-1/1 bg-primary dark:bg-primary-light flex items-center justify-center transition
                 hover:bg-primary-dark dark:hover:bg-primary rounded-xl text-xl text-main-100 dark:text-main-900">
@@ -38,6 +39,7 @@
 
 <script setup lang='js'>
     // DEFININDO DETALHES ------------------------------------------------------
+    const emit = defineEmits(['deletedOffer'])
     const props = defineProps({
         offer: {
             type: Object,
@@ -49,5 +51,19 @@
             defualt: false
         }
     })
+    // DEFININDO VARIÁVEIS E CONSTANTES ----------------------------------------
+    const { deleteOffer } = useOffers()
+    const offerId = props.offer.id
+
+    // LÓGICA PRINCIPAL --------------------------------------------------------
+    const handleDelete = async () => {
+        try {
+            await deleteOffer(offerId)
+        } catch(error) {
+            console.error(error)
+        } finally {
+            emit('deletedOffer', '')
+        }
+    }
 
 </script>

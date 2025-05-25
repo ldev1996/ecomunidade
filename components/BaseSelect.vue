@@ -120,6 +120,10 @@
         @apply h-auto overflow-hidden text-nowrap
     }
 
+    .vs-select-tailwind .vs__search::placeholder {
+        @apply text-main-500 dark:text-main-400
+    }
+
     .vs-select-tailwind .vs__selected, .vs-select-tailwind .vs__dropdown-option {
         @apply font-text text-main-900 dark:text-main-100
     }

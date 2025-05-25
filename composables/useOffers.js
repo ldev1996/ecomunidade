@@ -53,5 +53,15 @@ export const useOffers = () => {
         return data
     }
 
-    return { createOffer, fetchOffersByCommunity, fetchMyOffers, fetchOfferById }
+    const deleteOffer = async (offerId) => {
+        const { data, error } = await client
+            .from('offers')
+            .delete()
+            .eq('id', offerId)
+
+        if (error) throw error
+        return data
+    }
+
+    return { createOffer, fetchOffersByCommunity, fetchMyOffers, fetchOfferById, deleteOffer }
 }
