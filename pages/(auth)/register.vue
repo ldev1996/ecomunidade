@@ -21,7 +21,7 @@
                     label="Senha"
                     nameId="password" type="password"
                     v-model="authForm.password"
-                    placeholder="Uma senha forte"
+                    placeholder="Minímo de 8 caracteres"
                     required :disabled="loading"
                 />
                 <BaseSelect
@@ -30,6 +30,7 @@
                     :options="communities"
                     label="name" formLabel="Comunidades" multiple
                     :reduce="(community) => community.id"
+                    placeholder="Escolha seu bairro, escola, etc."
                 />
                 <button
                     class="bg-primary hover:bg-primary-dark text-white mb-2 py-2

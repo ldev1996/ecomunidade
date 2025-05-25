@@ -7,9 +7,9 @@
     
             <h1 class="text-xl lg:text-3xl text-primary dark:text-primary-light">Bem-vind@, {{ profile.username }}!</h1>
             <div class="w-full flex flex-col items-start justify-start gap-4 *:flex *:flex-col
-                *:w-full *:rounded-xl *:p-2 *:gap-2 *:shadow-md">
+                *:w-full *:rounded-xl *:p-2 *:gap-2">
 
-                <section class="bg-main-100 dark:bg-main-900">
+                <section class="bg-main-100 dark:bg-main-900 shadow-md">
                     <h2 class="text-lg lg:text-xl">Minhas Comunidades</h2>
                     <ul class="w-full flex flex-row items-start justify-start flex-wrap gap-2">
                         <li
@@ -20,13 +20,14 @@
                     </ul>
                 </section>
         
-                <section class="bg-main-200 dark:bg-main-950" v-if="offers.length > 0">
+                <section v-if="offers.length > 0">
                     <h2 class="text-lg lg:text-xl">Minhas Ofertas</h2>
                     <div class="w-full h-full flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <OfferCard isMine
                             v-for="offer in offers"
                             :key="offer.id"
                             :offer="offer"
+                            @deletedOffer="handleLoadOffers()"
                         />
                     </div>              
                 </section>
@@ -92,8 +93,7 @@
             console.log("Detalhes obtidos para as comunidades!")
 
             // Obtém as ofertas
-            offers.value = await fetchMyOffers()
-            console.log("Detalhes obtidos para as ofertas!")
+            await handleLoadOffers()
 
         } catch (error) {
             console.error("Erro ao carregar o perfil ou comunidades:", error)
@@ -113,6 +113,11 @@
             console.log("Usuário desconectado com sucesso!")
             return navigateTo('/login')
         }
+    }
+
+    const handleLoadOffers = async () => {
+        offers.value = await fetchMyOffers()
+        console.log("Detalhes obtidos para as ofertas!")
     }
 
 </script>
