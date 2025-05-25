@@ -3,8 +3,8 @@
         <div v-if="loading">
             <p>Carregando...</p>
         </div>
-        <div v-else-if="offer && item" class="w-full flex flex-col gap-2">
-            <h1 class="text-primary dark:text-primary-light text-2xl">{{ item.name }}</h1>
+        <div v-else-if="offer" class="w-full flex flex-col gap-2">
+            <h1 class="text-primary dark:text-primary-light text-2xl">{{ offer.title }}</h1>
             <span class="bg-primary/20 dark:bg-primary-light/20 border border-primary-dark dark:border-primary
                 rounded-2xl text-primary-dark dark:text-primary font-title py-1 px-2 text-sm text-center">
                 {{ community.name }}
@@ -19,7 +19,7 @@
             </span>
             <span class="font-title text-sm text-main-800 dark:text-main-200
                 bg-main-200 dark:bg-main-800 rounded-lg shadow p-2 w-auto">
-                <b>Material: </b>{{ item.category }}<br>
+                <b>Material: </b>{{ offer.material }}<br>
                 <b>Quantidade: </b>{{ offer.quantity }}
             </span>
             <h2 class="text-primary dark:text-primary-light text-lg">Descrição:</h2>
@@ -76,12 +76,10 @@
     const user = useSupabaseUser()
 
     const { fetchOfferById } = useOffers()
-    const { fetchItemById } = useItems()
     const { fetchProfileById } = useProfiles()
     const {fetchCommunityById } = useCommunities()
 
     const offer = ref(null)
-    const item = ref(null)
     const profile = ref(null)
     const community = ref(null)
     const userProfile = ref(null)
@@ -97,10 +95,6 @@
             // Obtém os dados da oferta
             offer.value = await fetchOfferById(id)
             console.log("Oferta obtida!")
-
-            // Obtém os dados do item relacionado
-            item.value = await fetchItemById(offer.value.item_id)
-            console.log("Item obtido!")
 
             // Obtém os dados da comunidade em que a oferta está
             community.value = await fetchCommunityById(offer.value.community_id)
@@ -119,9 +113,9 @@
             }
 
             // Atualiza o título conforme a oferta
-            useHead({ title: "Oferta de " + item.value.name })
+            useHead({ title: "Oferta de " + offer.value.title })
         } catch (error) {
-            console.error("Erro ao buscar item ou oferta: ", error)
+            console.error("Erro ao buscar oferta: ", error)
             useHead({ title: 'Oferta não encontrada' })
         } finally {
             loading.value = false
@@ -138,7 +132,7 @@
         Olá, ${profile.value.username}!
 
         Vi sua oferta na ECOmunidade e gostaria de retirá-la.
-        🟢 Oferta (${item.value.name}): ${offer.value.description}
+        🟢 Oferta (${offer.value.title}): ${offer.value.description}
         🟢 Comunidade: ${community.value.name}
 
         Aqui estão meus dados para combinarmos:
@@ -158,7 +152,7 @@
             return
         }
         formattedDate.value = formatDate(date.value)
-        const subject = `Interesse na oferta de ${item.value.name} na ECOmunidade ♻️`
+        const subject = `Interesse na oferta de ${offer.value.title} na ECOmunidade ♻️`
         const body = getMailText()
 
         if (mode === 'Browser') {
@@ -167,7 +161,7 @@
                 '_blank'
             )
         } else {
-            window.location.href = `mailto:${profile.value.contact}?subject=Interesse no item ${item.value.name}&body=${encodeURIComponent(body)}`
+            window.location.href = `mailto:${profile.value.contact}?subject=Interesse na oferta ${offer.value.title}&body=${encodeURIComponent(body)}`
         }
 
     }

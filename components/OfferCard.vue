@@ -4,10 +4,10 @@
             rounded-xl shadow-md">
         <div class="w-full flex justify-between items-center">
             <h2 class="font-bold text-lg text-primary dark:text-primary-light">
-                {{ item.name || 'Item não encontrado' }}
+                {{ offer.title || 'Item não encontrado' }}
             </h2>
             <span class="font-title text-sm text-main-800 dark:text-main-200">
-                {{ item.category }}    
+                {{ offer.material }}    
             </span>
         </div>
 
@@ -48,15 +48,6 @@
             type: Boolean,
             defualt: false
         }
-    })
-
-    // DEFININDO VARIÁVEIS E CONSTANTES ----------------------------------------
-    const { fetchItemById } = useItems()
-    const item = ref({})
-
-    // MONTANDO ----------------------------------------------------------------
-    onMounted(async () => {
-        item.value = await fetchItemById(props.offer.item_id)
     })
 
 </script>

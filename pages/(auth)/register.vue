@@ -21,7 +21,7 @@
                     label="Senha"
                     nameId="password" type="password"
                     v-model="authForm.password"
-                    placeholder="Uma senha forte"
+                    placeholder="Minímo de 8 caracteres"
                     required :disabled="loading"
                 />
                 <BaseSelect
