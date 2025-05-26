@@ -17,7 +17,7 @@
                     :required="!form.material" isRequired
                     :options="materials"
                     label="name" formLabel="Material"
-                    placeholder="Escolha o material do qual o item é feito"
+                    placeholder="Do que o item é feito?"
                 />
                 <BaseTextarea
                     label="Detalhes do Item"
@@ -40,6 +40,7 @@
                     :required="!form.community" isRequired
                     :options="communities"
                     label="name" formLabel="Ofertar nesta Comunidade:"
+                    plceholder="Onde o item está?"
                 />
                 <button
                     class="bg-primary hover:bg-primary-dark text-white mb-2 py-2
