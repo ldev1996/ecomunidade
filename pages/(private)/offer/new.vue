@@ -17,6 +17,7 @@
                     :required="!form.material" isRequired
                     :options="materials"
                     label="name" formLabel="Material"
+                    placeholder="Escolha o material do qual o item é feito"
                 />
                 <BaseTextarea
                     label="Detalhes do Item"
