@@ -62,7 +62,7 @@
     // DEFININDO VARIÁVEIS E CONSTANTES ----------------------------------------
     const supabase = useSupabaseClient()
     const user = useSupabaseUser()
-    const { fetchUserCommunities } = useUserCommunities()
+    const { fetchRelationUC } = useUserCommunities()
     const { fetchCommunityById } = useCommunities()
     const { createOffer } = useOffers()
     const userCommunities = ref([])
@@ -79,7 +79,7 @@
 
     // MONTANDO ----------------------------------------------------------------
     onMounted(async () => {
-        userCommunities.value = await fetchUserCommunities(user.value.id)
+        userCommunities.value = await fetchRelationUC(user.value.id)
         const communitiesDetails = await Promise.all(
             userCommunities.value.map(async (community) => {
                 return await fetchCommunityById(community.community_id)

@@ -57,7 +57,7 @@
     const supabase = useSupabaseClient()
     const user = useSupabaseUser()
     const { fetchProfileById } = useProfiles()
-    const { fetchUserCommunities } = useUserCommunities()
+    const { fetchRelationUC } = useUserCommunities()
     const { fetchCommunityById } = useCommunities()
     const { fetchMyOffers } = useOffers()
 
@@ -79,7 +79,7 @@
             console.log("Perfil carregado!")
 
             // Obtém as comunidades
-            const UCData = await fetchUserCommunities(user.value.id)
+            const UCData = await fetchRelationUC(user.value.id)
             console.log("Comunidades obtidas!")
 
             // Obtém os detalhes das comunidades

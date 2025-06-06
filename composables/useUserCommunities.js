@@ -15,7 +15,7 @@ export const useUserCommunities = () => {
         return { data, error }
     }
 
-    const fetchUserCommunities = async (userId) => {
+    const fetchRelationUC = async (userId) => {
         const { data, error } = await client
             .from('user_communities')
             .select('*')
@@ -25,5 +25,19 @@ export const useUserCommunities = () => {
         return data
     }
 
-    return { createRelationUC, fetchUserCommunities }
+    const upsertRelationsUC = async (userId, communityIds) => {
+        const relations = communityIds.map(communityId => ({
+            user_id: userId,
+            community_id: communityId
+        }))
+
+        const { data, error } = await client
+            .from('user_communities')
+            .upsert(relations)
+        
+        if (error) throw error
+        return data
+    }
+
+    return { createRelationUC, fetchRelationUC, upsertRelationsUC }
 }
