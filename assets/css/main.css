@@ -1,0 +1,14 @@
+@import 'tailwindcss';
+@import '@nuxt/ui';
+
+:root {
+    --ui-radius: 0.5rem;
+    --ui-container: 90rem;
+    --ui-bg: white;
+    --ui-text: black;
+}
+.dark {
+    --ui-bg: var(--ui-color-neutral-800);
+    --ui-border: var(--ui-color-neutral-700);
+    --ui-text: white;
+}
